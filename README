@@ -1,0 +1,24 @@
+Simple Media Player based on SurfaceView.
+
+1. Push /system/app/SimplePlayerDemo.apk to the Android-Box
+2. Push script g to the Android-Box
+#cat g
+killall com.greatgauss.example.SimplePlayerDemo 
+am start -n com.greatgauss.example.SimplePlayerDemo/com.greatgauss.example.SimplePlayerDemo.MainActivity
+sleep 3
+input keyevent 4
+input text 
+input keyevent 20; input keyevent 20
+input keyevent 21;input keyevent 21;input keyevent 21
+input keyevent 66
+		
+3. Running script g on the Android-Box
+#Local Video
+g /storage/external_storage/sdcard1/jgdy.rmvb
+		
+# HLS Video
+g http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8 
+		
+# HTTP Video
+g http://www.modrails.com/videos/passenger_nginx.mov
+	
