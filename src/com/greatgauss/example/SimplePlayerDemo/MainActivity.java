@@ -173,20 +173,25 @@ public class MainActivity extends Activity {
 
 			mediaPlayer.setDisplay(sv.getHolder());
 
-			Log.i(TAG, "prepare");
+			Log.i(TAG, "prepareAsync");
 
-			mediaPlayer.prepare();
+			mediaPlayer.prepareAsync();
 
-			mediaPlayer.start();
+			mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+				@Override
+				public void onPrepared(MediaPlayer mp) {
+					Log.i(TAG, "Prepared");
+					mediaPlayer.start();
 
-			mediaPlayer.seekTo(msec);
+					mediaPlayer.seekTo(msec);
 
-			seekBar.setMax(mediaPlayer.getDuration());
+					seekBar.setMax(mediaPlayer.getDuration());
 
-			startSeekBar();
+					startSeekBar();
 
-			btn_play.setEnabled(false);
-
+					btn_play.setEnabled(false);
+				}
+			});
 			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 				@Override
 				public void onCompletion(MediaPlayer mp) {
